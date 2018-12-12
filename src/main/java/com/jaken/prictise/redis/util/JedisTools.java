@@ -5,12 +5,13 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 public class JedisTools {
-    private static final String JEDIS_HOST = "localhost";
+    private static final String JEDIS_HOST = "192.168.1.14";
     private static final Integer JEDIS_PORT = 6379;
     private static JedisPool jedisPool = null;
 
     private static JedisPool getPool(){
         JedisPoolConfig config = new JedisPoolConfig();
+        config.setMaxTotal(3000);
         config.setMaxIdle(50000);
         config.setMaxWaitMillis(10000L);
         config.setTestOnBorrow(true);
